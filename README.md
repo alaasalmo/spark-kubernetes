@@ -65,10 +65,12 @@ It should be inside the driver box.
 
 ✅ **Driver Web UI**  
 The **Driver Web UI** in Spark displays the **processing details** for the **Spark DAG (Directed Acyclic Graph)**. The DAG represents the logical execution plan of a Spark application, showing how the application's tasks are divided into stages and how data flows between them.
+
 ✅ **Block manager**
 
 
 ✅ **Driver port**: Used for communication with executors and context port  
+
 ✅ **Block Manager Port**: Used for data transfer between driver and executor.
 
 ✅ **Context Port:** it’s dynamic and it’s use internally with driver port in the edge node
@@ -83,15 +85,22 @@ Note: We mention the main ports in the spark cluster that play the main role.
  The main components of in the master pod is 
   
 ✅ **Spark Master Process**: This process manages the entire cluster and assigns work to available worker nodes. The main port is 7077. The main roles for the master node.
+
 ✅ **Resource Allocation**: Assigns CPU and memory to workers.  
+
 ✅ **Job Scheduling**: Distributes tasks to worker nodes. FIFO (First In, First Out) asDefault.  
+
 ✅ **Monitoring**: Tracks active workers and running applications. Fault Tolerance: Reassigns tasks if a worker fails.  
+
 ✅ **Cluster Manager**: the cluster manager keeps track of available worker nodes and assigns tasks.
+
 ✅ **WebUI**: It’s real time monitoring to display Registered worker nodes. Running and completed applications. Resource utilization (CPU, memory).
 
 The main ports in the master node
+
 ✅ **Master nofr port**
 This port is listening to the communication from workers.
+
 ✅ **web port** 
 This port is responsible for the web part for the master to display the cluster information and the registered workers
   
@@ -111,8 +120,10 @@ The main components of in the worker pod is
   
 ✅ **Block manager**
   Manages local data blocks and serves them to other nodes.
+
 ✅ **Web UI executors**
   Displays a list of all jobs submitted to the Spark application. Shows the progress, stages, and tasks of each job. Provides information about completed, active, and failed jobs.
+
 ✅ **Shuffle manager**
   Handles shuffle operations and data transfer
 
@@ -125,6 +136,7 @@ The main ports in the worker pod
 ✅ **Executor Web port**
 
   Each executor has a Web UI that provides metrics and debugging information about the tasks running on that executor.
+
 ✅ **Shuffle port**
   this port is used by the shuffle service to serve shuffle data to other executors
 
@@ -273,7 +285,6 @@ Use the output on URL in the browser
 In this page we can admin the cluster and check the submitted jobs
 
 ![](./img/spark-admin.jpg)
-
 
 **- Get the Jupyter notebook**
 ```
