@@ -121,6 +121,7 @@ The main ports in the worker pod
 ✅ **Executor port**
 
   This is the main port used by the executor to communicate with the driver and other executors.
+
 ✅ **Executor Web port**
 
   Each executor has a Web UI that provides metrics and debugging information about the tasks running on that executor.
