@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spark-worker
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spark-worker
+  template:
+    metadata:
+      labels:
+        app: spark-worker
+    spec:
+      containers:
+      - name: spark-worker
+        image: alaasalmo/spark:3.5.3.1
+        args: ["worker"]
+        volumeMounts:
+        - mountPath: /spark
+          name: volume          
+        resources:
+          requests:
+            memory: "1Gi"   
+            cpu: "1"        
+          limits:
+            memory: "1Gi"   
+            cpu: "1"
+        ports:
+        - containerPort: 8081
+        - containerPort: 7077
+        - containerPort: 8082
+        - containerPort: 8083        
+        - containerPort: 8084
+        - containerPort: 7078
+        - containerPort: 8500           
+      volumes:
+      - name: volume
+        persistentVolumeClaim:
+          claimName: spark-pv-claim
+

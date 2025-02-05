@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spark-master
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spark-master
+  template:
+    metadata:
+      labels:
+        app: spark-master
+    spec:
+      containers:
+      - name: spark-master
+        image: alaasalmo/spark:3.5.3.1
+        args: ["master"]
+        volumeMounts:
+        - mountPath: /spark
+          name: volume        
+        resources:
+          requests:
+            memory: "2Gi"   
+            cpu: "2"        
+          limits:
+            memory: "2Gi"   
+            cpu: "2"
+        ports:
+        - containerPort: 7077
+        - containerPort: 8080
+        - containerPort: 4040
+        - containerPort: 8500
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+      volumes:
+      - name: volume
+        persistentVolumeClaim:
+          claimName: spark-pv-claim             
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spark-master
+spec:
+  ports:
+  - port: 7077
+    targetPort: 7077
+    name: spark
+    protocol: TCP
+  - port: 4040
+    targetPort: 4040
+    name: sparkui
+    protocol: TCP
+  - port: 8500
+    targetPort: 8500
+    name: worker
+    protocol: TCP
+  selector:
+    app: spark-master
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-spark-master
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: ui  
+  selector:
+    app: spark-master

@@ -1,0 +1,5 @@
+jupyter
+mlflow
+scikit-learn
+pyspark
+findspark

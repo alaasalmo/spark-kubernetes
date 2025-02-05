@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spark-jupyter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spark-jupyter
+  template:
+    metadata:
+      labels:
+        app: spark-jupyter
+    spec:
+      containers:
+      - name: spark-jupyter
+        image: alaasalmo/spark-jupyter:3.5.3.1
+        args: ["user"]
+        volumeMounts:
+        - mountPath: /spark
+          name: volume          
+        resources:
+          requests:
+            memory: "1Gi"   
+            cpu: "1"        
+          limits:
+            memory: "1Gi"   
+            cpu: "1"
+        ports:
+        - containerPort: 8081
+        - containerPort: 7077
+        - containerPort: 8082
+        - containerPort: 8083        
+        - containerPort: 8084
+        - containerPort: 7078
+        - containerPort: 8500
+        - containerPort: 8888 
+        - containerPort: 8889        
+      volumes:
+      - name: volume
+        persistentVolumeClaim:
+          claimName: spark-pv-claim
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spark-jupyter
+spec:
+  type: NodePort
+  ports:
+  - port: 8888
+    targetPort: 8888
+    name: edge
+    protocol: TCP
+  - port: 8889
+    targetPort: 8889
+    name: edge2
+  selector:
+    app: spark-jupyter          
+         
