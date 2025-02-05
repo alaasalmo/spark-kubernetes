@@ -119,11 +119,14 @@ The main components of in the worker pod is
 The main ports in the worker pod
 
 ✅ **Executor port**
+
   This is the main port used by the executor to communicate with the driver and other executors.
 ✅ **Executor Web port**
+
   Each executor has a Web UI that provides metrics and debugging information about the tasks running on that executor.
 ✅ **Shuffle port**
   this port is used by the shuffle service to serve shuffle data to other executors
+
 
 <p align="center">
 <img align="center" src="img\worker-spark.jpg" wodth=90%>
@@ -197,6 +200,7 @@ Note: It is not recommended to use distributed storage (PVC) for temporary files
 If you want you can pass this section and you can get the images from:
 https://hub.docker.com/repository/docker/alaasalmo/spark-jupyter
 https://hub.docker.com/repository/docker/alaasalmo/spark
+
 The yaml files are pointing to these images in the docker hub
 </br>
 
