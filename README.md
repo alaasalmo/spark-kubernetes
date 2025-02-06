@@ -296,12 +296,12 @@ In this page we can download/upload data files and jupyter notebooks. We can use
 ![](./img/jupyter-main.jpg)
 
 **- Jupyter notebooks examples**
+
 A. spark-example.ipynb
 In this example, we use information.csv
+
 B. linearRegressionBostonHousing.ipynb
 In this example, we use boston_housing.csv
 
 
-✅
-
-🤗
+✅ 🤗
