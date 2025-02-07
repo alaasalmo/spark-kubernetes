@@ -204,7 +204,7 @@ In our setup, pods point to the /tmp folder by default, but we can customize thi
 >spark.local.dir /spark-temp
 >Note: the location in $SPARK-HOME/conf
 
-Note: It is not recommended to use distributed storage (PVC) for temporary files. Spark generates a large number of temporary files during execution, which can overload the distributed storage system and impact overall performance. Instead, temporary storage should be assigned to fast local disks.
+Note: It is not recommended to use distributed storage (PVC) for temporary files. Spark generates a large number of temporary files during execution, which can overload the distributed storage system and impact overall performance. Instead, temporarily storage should be assigned to local disks.
 
 #### 6. Implementation steps
 
