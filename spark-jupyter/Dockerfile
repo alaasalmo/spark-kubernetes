@@ -33,6 +33,16 @@ RUN curl -O https://downloads.apache.org/spark/spark-${SPARK_VERSION}/spark-${SP
     && mv spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION} ${SPARK_HOME} \
     && rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
 
+# Update package list and install necessary packages
+RUN apt-get update && \
+    apt-get install -y texlive-xetex texlive-fonts-recommended texlive-plain-generic && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Default command (optional)
+CMD ["xelatex", "--version"]
+
+
 # Add Spark to PATH
 ENV PATH=$PATH:${SPARK_HOME}/bin
 

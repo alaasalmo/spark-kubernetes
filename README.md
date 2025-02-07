@@ -198,10 +198,10 @@ These files are used during spark-submit and are only needed while the job is ru
 In our setup, pods point to the /tmp folder by default, but we can customize this by setting the spark.local.dir parameter. This can be done in two ways:
 
 ###### During spark-submit
->--conf spark.local.dir=/mnt/spark-temp
+>--conf spark.local.dir=/spark-temp
 
 ###### spark-defaults.conf
->spark.local.dir /mnt/spark-temp
+>spark.local.dir /spark-temp
 >Note: the location in $SPARK-HOME/conf
 
 Note: It is not recommended to use distributed storage (PVC) for temporary files. Spark generates a large number of temporary files during execution, which can overload the distributed storage system and impact overall performance. Instead, temporary storage should be assigned to fast local disks.
@@ -300,8 +300,14 @@ In this page we can download/upload data files and jupyter notebooks. We can use
 A. spark-example.ipynb
 In this example, we use information.csv
 
+<a href="spark-jupyter/spark-example.pdf">spark-example.pdf</a> Or <a href="spark-jupyter/spark-example.ipynb">spark-example.ipynb</a>
+
+
 B. linearRegressionBostonHousing.ipynb
 In this example, we use boston_housing.csv
+
+<a href="spark-jupyter/linearRegressionBostonHousing.pdf">linearRegressionBostonHousing.pdf</a> Or <a href="spark-jupyter/linearRegressionBostonHousing.ipynb">linearRegressionBostonHousing.ipynb</a>
+
 
 
 ✅ 🤗
