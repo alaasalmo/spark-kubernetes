@@ -69,6 +69,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 RUN chmod +x entrypointjuypter.sh
 SHELL ["/bin/bash", "-c"]
-ENTRYPOINT ["./entrypointjuypter.sh"]
-#CMD ["sh", "-c", "/opt/spark/entrypointjuypter.sh salmo"]
+ENTRYPOINT ["./entrypointjuypter.sh test"]
+#CMD ["sh", "-c", "/opt/spark/entrypointjuypter.sh test"]
 #CMD ["sh", "-c", "tail -f /dev/null"]
